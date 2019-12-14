@@ -5,24 +5,24 @@ class Customer extends Model {
     return "customers";
   }
 
-  //   static get relationMappings() {
-  //     const Tee_time = require("./Tee_time");
+  static get relationMappings() {
+    const Blog_posts = require("./Blog_posts");
 
-  //     return {
-  //       tee_times: {
-  //         relation: Model.ManyToManyRelation,
-  //         modelClass: Tee_time,
-  //         join: {
-  //           from: "customers.id",
-  //           through: {
-  //             // customers_tee_times is the join table.
-  //             from: "tee_times_customers.customer_id",
-  //             to: "tee_times_customers.tee_time_id"
-  //           },
-  //           to: "tee_times.id"
-  //         }
-  //       }
-  //     };
+    return {
+      blog_posts: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Blog_posts,
+        join: {
+          from: "customers.id",
+          through: {
+            from: "blog_posts_customers.customer_id",
+            to: "blog_posts_customers.blog_post_id"
+          },
+          to: "blog_posts.id"
+        }
+      }
+    };
+  }
 
   static get jsonSchema() {
     return {

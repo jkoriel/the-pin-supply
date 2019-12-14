@@ -10,6 +10,8 @@ const knex = require("./db/knex");
 //   LocalStrategy = require("passport-local").Strategy;
 
 const customers = require("./routes/customerRoutes");
+const blog_posts = require("./routes/blogRoutes")
+const pin_products = require("./routes/pinRoutes")
 
 Model.knex(knex);
 
@@ -21,6 +23,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/customers", customers);
+app.use("/blog_posts", blog_posts);
+app.use("/pins", pin_products)
+
 
 // passport.use(
 //   new LocalStrategy(
